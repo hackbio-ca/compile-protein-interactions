@@ -1,6 +1,6 @@
-# demo-project
+# compile-protein-interactions
 
-A brief description of the project. Explain what it does and who it's for.
+COMPILE: Context-aware Mapping of Protein Interactions from Literature Evidence
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
