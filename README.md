@@ -1,137 +1,69 @@
-# compile-protein-interactions
+# React + TypeScript + Vite
 
-COMPILE: Context-aware Mapping of Protein Interactions from Literature Evidence
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+Currently, two official plugins are available:
 
-## Abstract
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-A concise summary of the project's goals, the problem it addresses, and its intended audience. This section can include potential use cases and key features.
+## Expanding the ESLint configuration
 
-## Installation
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Provide instructions on how to install and set up the project, such as installing dependencies and preparing the environment.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-# Example command to install dependencies (Python)
-pip install project-dependencies
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-# Example command to install dependencies (R)
-install.packages("project-dependencies")
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Quick Start
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Provide a basic usage example or minimal code snippet that demonstrates how to use the project.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```python
-# Example usage (Python)
-import my_project
-
-demo = my_project.example_function()
-print(demo)
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-```r
-# Example usage (R)
-library(my_project)
-
-demo <- example_function()
-print(demo)
-```
-
-## Usage
-
-Add detailed information and examples on how to use the project, covering its major features and functions.
-
-```python
-# More usage examples (Python)
-import my_project
-
-demo = my_project.advanced_function(parameter1='value1')
-print(demo)
-```
-```r
-# More usage examples (R)
-library(demoProject)
-
-demo <- advanced_function(parameter1 = "value1")
-print(demo)
-```
-How to Access the Neo4j Python Project
-1️⃣ Clone the Repository
-
-Go to the GitHub repository link:
-
-https://github.com/YourUsername/Neo4j-Bioinformatics
-
-
-Click Code → Copy URL.
-
-Open a terminal or PowerShell on your computer.
-
-Clone the repository:
-
-git clone https://github.com/YourUsername/Neo4j-Bioinformatics.git
-
-
-Change into the project directory:
-
-cd Neo4j-Bioinformatics
-
-2️⃣ Install Python Dependencies
-
-Make sure Python 3.10+ is installed.
-
-Install the Neo4j Python driver:
-
-pip install neo4j~=5.28.0
-
-
-Optional: If you use a .env file, install python-dotenv:
-
-pip install python-dotenv
-
-3️⃣ Set Up Neo4j Credentials
-
-The project uses environment variables for security.
-
-In PowerShell, set your Neo4j AuraDB credentials:
-
-$env:NEO4J_URI="neo4j+s://<YOUR_INSTANCE>.databases.neo4j.io"
-$env:NEO4J_USERNAME="<YOUR_USERNAME>"
-$env:NEO4J_PASSWORD="<YOUR_PASSWORD>"
-
-
-Important: Do not commit your credentials to GitHub.
-
-4️⃣ Run the Python Script
-
-Run the blank connection script to test connectivity:
-
-python connections.py
-
-
-Expected output:
-
-Connection Successful!
-
-
-Your Neo4j database is now ready and empty. You can start adding nodes and relationships.
-
-5️⃣ Optional: Load Your Own Data
-
-You can extend the script to load bioinformatics data (genes, proteins, diseases, drugs) into Neo4j.
-
-Any changes to the code can be committed and pushed if you are contributing back to the repository.
-
-## Contribute
-
-Contributions are welcome! If you'd like to contribute, please open an issue or submit a pull request. See the [contribution guidelines](CONTRIBUTING.md) for more information.
-
-## Support
-
-If you have any issues or need help, please open an [issue](https://github.com/hackbio-ca/demo-project/issues) or contact the project maintainers.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
