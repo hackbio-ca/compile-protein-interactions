@@ -57,6 +57,72 @@ library(demoProject)
 demo <- advanced_function(parameter1 = "value1")
 print(demo)
 ```
+How to Access the Neo4j Python Project
+1️⃣ Clone the Repository
+
+Go to the GitHub repository link:
+
+https://github.com/YourUsername/Neo4j-Bioinformatics
+
+
+Click Code → Copy URL.
+
+Open a terminal or PowerShell on your computer.
+
+Clone the repository:
+
+git clone https://github.com/YourUsername/Neo4j-Bioinformatics.git
+
+
+Change into the project directory:
+
+cd Neo4j-Bioinformatics
+
+2️⃣ Install Python Dependencies
+
+Make sure Python 3.10+ is installed.
+
+Install the Neo4j Python driver:
+
+pip install neo4j~=5.28.0
+
+
+Optional: If you use a .env file, install python-dotenv:
+
+pip install python-dotenv
+
+3️⃣ Set Up Neo4j Credentials
+
+The project uses environment variables for security.
+
+In PowerShell, set your Neo4j AuraDB credentials:
+
+$env:NEO4J_URI="neo4j+s://<YOUR_INSTANCE>.databases.neo4j.io"
+$env:NEO4J_USERNAME="<YOUR_USERNAME>"
+$env:NEO4J_PASSWORD="<YOUR_PASSWORD>"
+
+
+Important: Do not commit your credentials to GitHub.
+
+4️⃣ Run the Python Script
+
+Run the blank connection script to test connectivity:
+
+python connections.py
+
+
+Expected output:
+
+Connection Successful!
+
+
+Your Neo4j database is now ready and empty. You can start adding nodes and relationships.
+
+5️⃣ Optional: Load Your Own Data
+
+You can extend the script to load bioinformatics data (genes, proteins, diseases, drugs) into Neo4j.
+
+Any changes to the code can be committed and pushed if you are contributing back to the repository.
 
 ## Contribute
 
