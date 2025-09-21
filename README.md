@@ -7,6 +7,9 @@ Our project, COMPILE (Context-aware Mapping of Protein Interactions from Literat
 
 ```js
 
+python3.12 -m venv env
+source env/bin/activate
+
 pip install scispacy
 pip install spacy
 pip install re
