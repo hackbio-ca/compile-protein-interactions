@@ -40,7 +40,7 @@ ids=["40973402"]#,
     #  "40758965"]
 
 cells_pmid = []
-unique_cells = {} # unique cell names
+unique_cells = set() # unique cell names
 
 f = open('data.csv','w')
 
@@ -54,8 +54,10 @@ for id in ids:
         tp = trips.process_text(data[id])
         print(tp.statements)
     else:
-        for s in key_sentences:
-            tp = trips.process_text(s)
+        # for s in key_sentences:
+        #     tp = trips.process_text(s)
+        #     print(tp.statements)
+            tp = trips.process_text(key_sentences[0])
             print(tp.statements)
 
     interactions = [str(i) for i in tp.statements]
@@ -97,10 +99,11 @@ for id in ids:
             # Make lowercase and replace space with underscore
             cell_name_clean = cell_name.lower().replace(" ", "_")
 
-            if cell_name_clean in unique_cells:
+            if cell_name_clean not in unique_cells:
                 unique_cells.add(cell_name_clean)
 
             # f.write(f'{cell_name_clean}, {id}\n') 
-
+            hypernode = f'{protein_a}-{protein_b}-{id}'
+            f.write(f'{protein_a},{protein_b}, {key_sentences[0]}, {cell_name_clean},{id},{hypernode}\n') 
 
 f.close()
