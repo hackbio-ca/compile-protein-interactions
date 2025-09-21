@@ -4,25 +4,50 @@ import requests
 import xml.etree.ElementTree as ET
 import json
 
-
+# Read abstract data
 with open('pmid_to_abstract.json', 'r') as f:
     data = json.load(f)
 
 # Load model
 nlp = spacy.load("en_ner_jnlpba_md")
-ids=["40912354"]
+ids=["40973402", "40973401", "40966293"]
+
+cells_pmid = []
+# label = dict.fromkeys(ids)
+unique_cells = {} # unique cell names
+
+f = open('test_cells_to_pmid.csv','w')
 
 for id in ids:
     abstract = data[id]
     doc = nlp(abstract)
     entity_types = ['CELL_LINE', 'CELL_TYPE']
 
-    label = dict.fromkeys(ids)
-    label[id] = [(ent.label_ , ent.text) for ent in doc.ents if ent.label_ in entity_types]
+    for ent in doc.ents:
+        if ent.label_ in entity_types:
 
-    print(label)
+            cell_name = ent.text
 
+            # Make lowercase and replace space with underscore
+            cell_name_clean = cell_name.lower().replace(" ", "_")
 
+            if cell_name_clean in unique_cells:
+                unique_cells.add(cell_name_clean)
+
+            f.write(f'{cell_name_clean}, {id}\n') 
+
+f.close()
+
+# print(cells_pmid)
+# cells_pmid.append((cell_name_clean, id))
+# label[id] = [(ent.label_ , ent.text) for ent in doc.ents if ent.label_ in entity_types]
+# print(label)
+
+# cell, pmid
+# make lowercase
+# replace space with underscore
+# find and keep unique types
+# each unique cell gets a unique ID
 
 # for id in ids:
 
