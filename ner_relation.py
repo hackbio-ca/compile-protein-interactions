@@ -18,7 +18,7 @@ def find_key_sentences(abstract, ppi_terms):
             sentence for sentence in sentences
             if re.search(r"\b(" + "|".join(ppi_terms) + r")\b", sentence, re.IGNORECASE)
         ]
-        
+
         return matched_sentences
     
 # Read abstract data
@@ -47,31 +47,37 @@ ids=["40973402",
      "40340056",
      "40296620",
      "39695808",
-     "39680531"
-]
-
-# Removed
-    #  "40676669",
-    #  "40927314",
-    #  "40551140",
-    #  "40818508",
-    #  "40815569",
-    #  "40441521",
-    #  "40373772",
-    #  "40362335",
-    #  "40247363",
-    #  "40223243",
-    #  "40212965",
-    #  "40205047",
-    #  "40183841",
-    #  "40176187",
-    #  "40175501",
-    #  "40131356",
-#      "40301248",
-#      "40318722",
-#      "40337095",
-#      "40337551",
-    #  "40081988"]
+     "39680531", #
+     "40676669",
+     "40927314",
+     "40551140",
+     "40818508",
+     "40815569",
+     "40441521",
+     "40373772",
+     "40362335",
+     "40247363",
+     "40223243",
+     "40212965",
+     "40205047",
+     "40183841",
+     "40176187",
+     "40175501",
+     "40131356",
+     "40301248",
+     "40318722",
+     "40337095",
+     "40337551",
+     "40081988",
+     "39759399", 
+     "39775030", 
+     "39870805", 
+     "39902677", 
+     "39952508", 
+     "39975251", 
+     "40001482", 
+     "40041897", 
+     "40368227"]
 
 cells_pmid = []
 
@@ -96,6 +102,7 @@ for id in ids:
         if tp.statements:
 
             interactions = [str(i) for i in tp.statements]
+            ppi_sentence = s
             print(tp.statements)
             break
 
@@ -143,7 +150,7 @@ for id in ids:
                 
                 unique_cells.add(cell_name_clean)
                 hypernode = f'{protein_a}-{protein_b}-{id}'
-                f.write(f'{protein_a},{protein_b}, {key_sentences[0]}, {cell_name_clean},{id},{hypernode}\n') 
+                f.write(f' "{protein_a}","{protein_b}", "{ppi_sentence}", "{cell_name_clean}","{id}","{hypernode}"\n') 
 
 
 f.close()
