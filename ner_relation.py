@@ -150,7 +150,7 @@ for id in ids:
                 
                 unique_cells.add(cell_name_clean)
                 hypernode = f'{protein_a}-{protein_b}-{id}'
-                f.write(f' "{protein_a}","{protein_b}", "{ppi_sentence}", "{cell_name_clean}","{id}","{hypernode}"\n') 
+                f.write(f'"{protein_a}","{protein_b}","{ppi_sentence}","{cell_name_clean}","{id}","{hypernode}"\n') 
 
 
 f.close()
