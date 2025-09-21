@@ -7,10 +7,10 @@ Our project, COMPILE (Context-aware Mapping of Protein Interactions from Literat
 
 ```js
 
-# Install packages
 pip install scispacy
 pip install spacy
 pip install re
+pip install neo4j
 pip install indra
 pip install \ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_jnlpba_md-0.5.4.tar.gz
 
