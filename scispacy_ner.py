@@ -5,18 +5,29 @@ import xml.etree.ElementTree as ET
 import json
 
 # Read abstract data
-with open('pmid_to_abstract.json', 'r') as f:
+with open('pmid_to_abstract_updated.json', 'r') as f:
     data = json.load(f)
 
 # Load model
 nlp = spacy.load("en_ner_jnlpba_md")
-ids=["40973402", "40973401", "40966293"]
+ids=["40973402", 
+     "40973401", 
+     "40966293",
+     "40676669",
+     "40927314",
+     "40915373",
+     "40587559",
+     "40913132",
+     "40551140",
+     "40818508",
+     "40815569",
+     "40758965"]
 
 cells_pmid = []
 # label = dict.fromkeys(ids)
 unique_cells = {} # unique cell names
 
-f = open('test_cells_to_pmid.csv','w')
+f = open('cells_to_pmid.csv','w')
 
 for id in ids:
     abstract = data[id]
