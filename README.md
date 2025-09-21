@@ -1,92 +1,73 @@
-# Abstract
-Protein-protein interactions (PPIs) are often highly specific to the conditions in which they occur, including cell type, development stage, and disease state. However, most large PPI databases remain agnostic to these key nuances, reporting interactions without indicating the biological context. This gap limits researchers' ability to understand how molecular networks very across biological systems. Much of this context-specific information resides in the scientific literature, where it is difficult to access at scale. Natural language processing (NLP) offers a powerful solution by mining PPIs directly from publications while retaining the surrounding contextual information, such as the cell type in which the interaction was observed.
+# Welcome to your Lovable project
 
-Our project, COMPILE (Context-aware Mapping of Protein Interactions from Literature Evidence), will develop a user-friendly web platform to make this information accessible. Using context-aware NLP pipelines, we will extract protein-protein interactions from the literature, annotate them with detailed biological context, and link each interaction to the exact supporting sentence in the source paper. The results will be stored in an interactive knowledge graph, where proteins are nodes, interactions are edges, and contextual attributes are embedded as metadata. By combining literature mining with rich graphical visualization, COMPILE will allow researchers to easily identify PPIs relevant to their biological system of interest and explore protein networks across different cellular contexts. This tool will bridge the gap between unstructured text and actionable, evidence-linked PPI data, accelerating hypothesis generation in molecular biology.
+## Project info
 
-## Environment Setup
+**URL**: https://lovable.dev/projects/8959d5e1-8eaf-4109-9289-edb6edbf6d23
 
-```js
+## How can I edit this code?
 
-python3.12 -m venv env
-source env/bin/activate
+There are several ways of editing your application.
 
-pip install scispacy
-pip install spacy
-pip install re
-pip install neo4j
-pip install indra
-pip install \ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_jnlpba_md-0.5.4.tar.gz
+**Use Lovable**
 
+Simply visit the [Lovable Project](https://lovable.dev/projects/8959d5e1-8eaf-4109-9289-edb6edbf6d23) and start prompting.
 
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
 
+**Edit a file directly in GitHub**
 
-# React + TypeScript + Vite
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Use GitHub Codespaces**
 
-Currently, two official plugins are available:
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What technologies are used for this project?
 
-## Expanding the ESLint configuration
+This project is built with:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## How can I deploy this project?
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Simply open [Lovable](https://lovable.dev/projects/8959d5e1-8eaf-4109-9289-edb6edbf6d23) and click on Share -> Publish.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Can I connect a custom domain to my Lovable project?
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Yes, you can!
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
